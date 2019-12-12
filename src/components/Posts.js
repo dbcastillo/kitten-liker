@@ -16,14 +16,14 @@ class Posts extends Component {
   }
 
   render() {
-      console.log(this.props);
+      console.log('Posts component',this.props.posts);
       
-    const postItems = this.props.posts.map((post, ind) => (
+    const postItems = this.props.posts.map((post) => (
         <div class="card">
-            <img src={`https://picsum.photos/300?random=${ind}`} alt="RandomPic" />
+        <img src={post.image} alt="RandomPic" />
             <div class="container">
                 <h3><b>Title: {post.title}</b></h3>
-                <p>Content: {post.body}</p>
+                <p>Content: {post.content}</p>
             </div>
         </div>
     ));

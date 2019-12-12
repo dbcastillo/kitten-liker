@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { createPost } from '../actions/postActions'
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { createPost } from "../actions/postActions";
 
 class PostForm extends Component {
   state = {
     title: "",
     body: "",
-    image: ""
+    image: Math.random()
   };
 
   onChange = e => {
@@ -20,10 +20,11 @@ class PostForm extends Component {
     const post = {
       title: this.state.title,
       body: this.state.body,
-      image: `https://source.unsplash.com/featured/?{${this.state.image}}`
+      image:this.state.image
     };
 
-    this.props.createPost(post)
+    this.props.createPost(post);
+    this.setState({ title: "", body: ""});
   };
 
   render() {
@@ -52,16 +53,6 @@ class PostForm extends Component {
             />
           </div>
           <br />
-          <div>
-            <label>Image: </label>
-            <br />
-            <textarea
-              name="image"
-              onChange={this.onChange}
-              value={this.state.image}
-            />
-          </div>
-          <br />
           <button type="submit">Submit</button>
         </form>
       </div>
@@ -71,6 +62,6 @@ class PostForm extends Component {
 
 PostForm.propTypes = {
   createPost: PropTypes.func.isRequired
-}
+};
 
 export default connect(null, { createPost })(PostForm);
