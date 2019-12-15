@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createPost } from "../actions/postActions";
-import {NavLink} from 'react-router-dom'
+import {NavLink, Router} from 'react-router-dom'
+import history from '../history';
 
 class PostForm extends Component {
   state = {
@@ -26,6 +27,8 @@ class PostForm extends Component {
 
     this.props.createPost(post);
     this.setState({ title: "", body: ""});
+
+    history.push("/posts")
   };
 
   render() {
