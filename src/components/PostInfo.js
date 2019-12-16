@@ -9,20 +9,21 @@ class PostInfo extends Component {
     }
   
     render() {
+        console.log('post info',this.props.post);
         
       const post = this.props.post;
       return (
         <div>
           <h2>post_id: post_title</h2>
           <p>this is some post content</p>
-          <div className="btn-group">
-            <Link to={{ pathname: `/posts/${post.id}/edit`, state: { post: post } }} className='btn btn-info'>  
+          <div >
+            <Link to={{ pathname: `/posts/${post.id}/edit`, state: { post: post } }} >  
               Edit
             </Link>
-            <button className="btn btn-danger" type="button" onClick={() => this.props.deletePost(post.id)}>          
+            <button type="button" onClick={() => this.props.deletePost(post.id)}>          
               Delete
             </button>
-            <Link to="/posts" className="btn btn-secondary">Close</Link>                                                 
+            <Link to="/posts" >Close</Link>                                                 
           </div>
           <hr/>
         </div>

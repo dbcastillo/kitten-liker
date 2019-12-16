@@ -24,7 +24,7 @@ export const createPost = postData => dispatch => {
     body: JSON.stringify({
       title: postData.title,
       content: postData.body,
-      image: `https://picsum.photos/300/300?random=${Math.random()}`
+      image: `https://picsum.photos/id/${Math.round(Math.random()*100)}/300`
     })
   })
     .then(res => res.json())

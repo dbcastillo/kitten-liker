@@ -1,5 +1,4 @@
 import React from "react";
-import './PostHome.css'
 
 class PostHome extends React.Component {
   render() {
