@@ -9,6 +9,7 @@ import history from '../history';
 
 const getPosts = posts => ({ type: FETCH_POSTS, payload: posts });
 const newPost = post => ({ type: NEW_POST, payload: post });
+const receivePost = post => ({ type: RECEIVE_POST, payload: post })
 const apiUrl = "http://localhost:3001/api/posts";
 
 export const fetchPosts = () => dispatch => {
@@ -31,18 +32,13 @@ export const createPost = postData => dispatch => {
     .then(post => dispatch(newPost(post)));
 };
 
-export const getPost = id => dispatch => {
+export const getPost = (id) => dispatch => {
   fetch(`${apiUrl}/${id}`)
     .then(res => res.json())
-    .then(response => {
-      dispatch({ type: RECEIVE_POST, article: response.data });
-    })
-    .catch(error => {
-      throw(error);
-    });
+    .then(post => dispatch(receivePost(post)))
 };
 
-export const deletePost = (id) => dispatch => {
+export const deletePost = id => dispatch => {
   fetch(`${apiUrl}/${id}`)
     .then(res => res.json())
     .then(response => {

@@ -8,7 +8,8 @@ import {
 
 const initialState = {
   items: [],
-  item: {}
+  item: {},
+  singleItem: {}
 };
 
 export default function(state = initialState, action) {
@@ -24,7 +25,9 @@ export default function(state = initialState, action) {
         item: action.payload
       };
     case RECEIVE_POST:
-      return action.posts;
+      return {
+          ...state, singleItem: action.payload
+      }
     case REMOVE_POST:
       return state.filter(post => post.id !== action.payload.id);
     default:

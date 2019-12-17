@@ -4,7 +4,7 @@ import PostForm from "./components/PostForm";
 import PostInfo from "./components/PostInfo";
 import PostEdit from "./components/PostEdit";
 import PostHome from "./components/PostHome";
-import {Router, Route, NavLink, Switch} from 'react-router-dom'
+import {Router, Route, Switch} from 'react-router-dom'
 import history from './history';
 import "./stylesheets/App.css"
 

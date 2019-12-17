@@ -15,6 +15,7 @@ class Posts extends Component {
   }
 
   render() {
+    
     const postItems = this.props.posts.map(post =>  
       <div class="card">
         <img src={post.image} alt="Avatar" />
@@ -23,15 +24,28 @@ class Posts extends Component {
             <b>Title: {post.title}</b>
           </h3>
           <p>Content: {post.content}</p>
+          <button>Edit</button>
+          <button>Delete</button>
         </div>
       </div>
     );
-    return (
-      <div>
-        <h1>Posts</h1>
-        <div className="flex-container">{postItems}</div>
-      </div>
-    );
+
+    if (this.props.posts.length) {
+      return (
+        <div>
+          <h1>Posts</h1>
+          <div className="flex-container">{postItems}</div>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <h1>
+            No Posts
+          </h1>
+        </div>
+      )
+    }
   }
 }
 

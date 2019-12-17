@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createPost } from "../actions/postActions";
-import {NavLink, Router} from 'react-router-dom'
 import history from '../history';
 
 class PostForm extends Component {
@@ -37,27 +36,25 @@ class PostForm extends Component {
         <h1>Add Post</h1>
         <form onSubmit={this.onSubmit}>
           <div>
-            <label>Title: </label>
-            <br />
             <input
               type="text"
               name="title"
               onChange={this.onChange}
               value={this.state.title}
+              placeholder="Enter Title here"
             />
           </div>
           <br />
           <div>
-            <label>Content: </label>
-            <br />
             <textarea
               name="body"
               onChange={this.onChange}
               value={this.state.body}
+              placeholder="Enter Content here"
             />
           </div>
           <br />
-            <button type="submit">Submit</button>
+            <button type="submit">Post</button>
         </form>
       </div>
     );
