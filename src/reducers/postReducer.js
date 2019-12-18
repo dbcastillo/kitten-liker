@@ -26,7 +26,7 @@ export default function(state = initialState, action) {
       };
     case RECEIVE_POST:
       return {
-          ...state, singleItem: action.payload
+          singleItem: action.payload
       }
     case REMOVE_POST:
       return state.filter(post => post.id !== action.payload.id);
@@ -34,3 +34,22 @@ export default function(state = initialState, action) {
       return state;
   }
 }
+
+// export default function productReducer(state = {}, action) {  
+//     switch (action.type) {
+//       case RECEIVE_PRODUCT:                                     
+//         return action.product;
+  
+//       case UPDATE_PRODUCT:
+//         return {
+//           id: action.id,
+//           name: action.payload.name,
+//           description: action.payload.description,
+//           price: action.payload.price,
+//           category: action.payload.category,
+//           picture_url: action.payload.picture_url
+//         }
+//       default:
+//         return state;
+//     }
+//   };

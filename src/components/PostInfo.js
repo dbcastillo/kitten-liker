@@ -1,45 +1,52 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { getPost, deletePost } from "../actions/postActions";
 
 class PostInfo extends Component {
+
   componentDidMount() {
-    this.props.getPost(this.props.match.params.id);
+    let id = this.props.match.params.id
+    this.props.getPost(id);
   }
 
   render() {
     console.log("post info", this.props.match.params.id);
 
-    const post = this.props;
+    const post = this.props.post
     return (
-      <div>
-        <h2>{post.id}: {post.title}</h2>
-        <p>{post.content}</p>
-        <div>
-          <Link
-            to={{ pathname: `/posts/${post.id}/edit`, state: { post: post } }}
-          >
-            Edit
-          </Link>
-          <button type="button" onClick={() => this.props.deletePost(post.id)}>
-            Delete
-          </button>
-          <Link to="/posts">Close</Link>
+        <article key={post.id}>
+        <div className="card">
+        <img src={post.image} alt="Avatar" />
+        <div className="container">
+          <h3>
+            <b>Title: {post.title}</b>
+          </h3>
+          <p>Content: {post.content}</p>
+          <button>Edit</button>
+          <button>Delete</button>
         </div>
-        <hr />
       </div>
+
+      </article>
+
     );
   }
 }
 
-const mapStateToProps = state => ({ 
-    post: state.post 
-});
+// const mapStateToProps = (state, ownProps) => {
+//   let id = ownProps.match.params.id;
+//   return {
+//     post: state.post.find(post => post.id === id)
+//   };
+// };
+
+const mapStateToProps = (state) => ({ 
+    post: state.posts.singleItem 
+})
 
 const mapDispatchToProps = dispatch => ({
-    getPost: () => dispatch(getPost()),
-    deletePost: () => dispatch(deletePost())
+  getPost: (id) => dispatch(getPost(id)),
+  deletePost: () => dispatch(deletePost())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostInfo);

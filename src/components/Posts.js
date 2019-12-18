@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
 import { fetchPosts } from "../actions/postActions";
 import "../stylesheets/Posts.css";
 
@@ -17,9 +18,11 @@ class Posts extends Component {
   render() {
     
     const postItems = this.props.posts.map(post =>  
-      <div class="card">
-        <img src={post.image} alt="Avatar" />
-        <div class="container">
+      <div className="card" key={post.id}>
+        <Link to={`/posts/${post.id}`}>
+         <img src={post.image} alt="Avatar" />
+        </Link>
+        <div className="container">
           <h3>
             <b>Title: {post.title}</b>
           </h3>

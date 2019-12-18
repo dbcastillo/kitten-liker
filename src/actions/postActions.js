@@ -33,9 +33,11 @@ export const createPost = postData => dispatch => {
 };
 
 export const getPost = (id) => dispatch => {
-  fetch(`${apiUrl}/${id}`)
+  fetch(`http://localhost:3001/api/posts/${id}`)
     .then(res => res.json())
-    .then(post => dispatch(receivePost(post)))
+    .then(post => {
+      dispatch(receivePost(post))
+    })
 };
 
 export const deletePost = id => dispatch => {
