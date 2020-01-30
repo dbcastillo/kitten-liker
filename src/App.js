@@ -4,9 +4,9 @@ import PostForm from "./components/PostForm";
 import PostInfo from "./components/PostInfo";
 import PostEdit from "./components/PostEdit";
 import PostHome from "./components/PostHome";
-import {Router, Route, Switch} from 'react-router-dom'
-import history from './history';
-import "./stylesheets/App.css"
+import { Router, Route, Switch } from "react-router-dom";
+import history from "./history";
+import "./stylesheets/App.css";
 
 class App extends Component {
   render() {
@@ -22,11 +22,13 @@ class App extends Component {
 }
 
 const Navigation = () => (
-    <div className="topnav">
-      <a className="active" href="http://localhost:3000">Home</a>
-      <a href="http://localhost:3000/posts">Posts</a>
-      <a href="http://localhost:3000/posts/new">Add Post</a>
-    </div>
+  <div className="topnav">
+    <a className="active" href="http://localhost:3000">
+      Home
+    </a>
+    <a href="http://localhost:3000/posts">Posts</a>
+    <a href="http://localhost:3000/posts/new">Add Post</a>
+  </div>
 );
 
 const Main = () => (

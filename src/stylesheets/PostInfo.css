@@ -1,0 +1,33 @@
+.postImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 600px;
+  }
+
+  .postTitle {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  .postContent {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  .editButton {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .deleteButton {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }

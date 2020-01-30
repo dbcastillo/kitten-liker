@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom';
-import { fetchPosts } from "../actions/postActions";
+import { Link } from "react-router-dom";
+import { fetchPosts, deletePost } from "../actions/postActions";
 import "../stylesheets/Posts.css";
+import history from "../history";
+import { Route } from "react-router-dom";
 
 class Posts extends Component {
   componentDidMount() {
@@ -15,39 +17,44 @@ class Posts extends Component {
     }
   }
 
+  handleDelete = e => {
+    const cardId = parseInt(
+      e.target.parentNode.children[2]["href"].split("/").reverse()[1]
+    );
+    const card = this.props.posts.filter(post => post.id === cardId)[0];
+
+    this.props.deletePost(card);
+  };
+
   render() {
-    
-    const postItems = this.props.posts.map(post =>  
+    const postItems = this.props.posts.map(post => (
       <div className="card" key={post.id}>
-        <Link to={`/posts/${post.id}`}>
-         <img src={post.image} alt="Avatar" />
-        </Link>
+        <img src={post.image} alt="Avatar" />
         <div className="container">
           <h3>
             <b>Title: {post.title}</b>
           </h3>
           <p>Content: {post.content}</p>
-          <button>Edit</button>
-          <button>Delete</button>
+          <Link to={`/posts/${post.id}`}>
+            <button>More Info</button>
+          </Link>
         </div>
       </div>
-    );
+    ));
 
     if (this.props.posts.length) {
       return (
         <div>
-          <h1>Posts</h1>
+          <h1 className="posts">Redux-stagram</h1>
           <div className="flex-container">{postItems}</div>
         </div>
-      )
+      );
     } else {
       return (
         <div>
-          <h1>
-            No Posts
-          </h1>
+          <h1>Loading Posts...</h1>
         </div>
-      )
+      );
     }
   }
 }
@@ -57,8 +64,6 @@ const mapStateToProps = state => ({
   newPost: state.posts.item
 });
 
-const mapDispatchToProps = dispatch => ({
-  fetchPosts: () => dispatch(fetchPosts())
-});
+const mapDispatchToProps = { fetchPosts, deletePost };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Posts);
