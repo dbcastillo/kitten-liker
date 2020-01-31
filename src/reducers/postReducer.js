@@ -9,7 +9,6 @@ import {
 
 const initialState = {
   items: [],
-  item: {},
   singleItem: {}
 };
 
@@ -23,7 +22,7 @@ export default function(state = initialState, action) {
     case NEW_POST:
       return {
         ...state,
-        item: action.post
+        items: [...state.items, action.post]
       };
     case RECEIVE_POST:
       return {

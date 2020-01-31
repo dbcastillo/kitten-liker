@@ -7,11 +7,11 @@ import {
 } from "./types";
 import history from "../history";
 
-const getPosts = posts => ({ type: FETCH_POSTS, posts: posts });
-const newPost = post => ({ type: NEW_POST, post: post });
-const receivePost = post => ({ type: RECEIVE_POST, post: post });
-const updateThePost = post => ({ type: UPDATE_THE_POST, post: post });
-const deleteThePost = post => ({ type: REMOVE_POST, post: post });
+const getPosts = posts => ({ type: FETCH_POSTS, posts });
+const newPost = post => ({ type: NEW_POST,  post });
+const receivePost = post => ({ type: RECEIVE_POST,  post });
+const updateThePost = post => ({ type: UPDATE_THE_POST,  post });
+const deleteThePost = post => ({ type: REMOVE_POST,  post });
 const apiUrl = "http://localhost:3001/api/posts";
 
 export const fetchPosts = () => dispatch => {
